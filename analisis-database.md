@@ -18,10 +18,17 @@
 ## Transaksi
 1. Relasi ke User
 2. Data Diri Pembeli
+    - name
+    - email
+    - address
+    - phone
 3. Data Kurir
 4. Data Pembayaran
+    - payment
+    - payment_url
 5. Total Harga
 6. Status Transaksi
+7. Soft Delete
 
 ## Item Transaksi
 1. Relasi ke User
