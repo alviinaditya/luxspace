@@ -54,7 +54,7 @@
                         <div class="w-full px-3">
                             <button type="submit"
                                 class="inline-block bg-indigo-500 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded shadow-lg">
-                                Save Prduct
+                                Save Product
                             </button>
                         </div>
                     </div>
