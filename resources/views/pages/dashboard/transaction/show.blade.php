@@ -27,7 +27,49 @@
             </h2>
             <div class="shadow overflow-hidden sm:rounded-md mb-5">
                 <div class="px-4 py-5 bg-white sm:p-6">
-                    <div class="p-6 bg-white border-b border-gray-200"></div>
+                    <div class="p-6 bg-white border-b border-gray-200">
+                        <table class="table-auto w-full">
+                            <tbody>
+                                <tr>
+                                    <th class="border px-6 py-4 text-right">Name</th>
+                                    <td class="border px-6 py-4">{{ $transaction->name }}</td>
+                                </tr>
+                                <tr>
+                                    <th class="border px-6 py-4 text-right">Email</th>
+                                    <td class="border px-6 py-4">{{ $transaction->email }}</td>
+                                </tr>
+                                <tr>
+                                    <th class="border px-6 py-4 text-right">Alamat</th>
+                                    <td class="border px-6 py-4">{{ $transaction->address }}</td>
+                                </tr>
+                                <tr>
+                                    <th class="border px-6 py-4 text-right">Telepon</th>
+                                    <td class="border px-6 py-4">{{ $transaction->phone }}</td>
+                                </tr>
+                                <tr>
+                                    <th class="border px-6 py-4 text-right">Kurir</th>
+                                    <td class="border px-6 py-4">{{ $transaction->courier }}</td>
+                                </tr>
+                                <tr>
+                                    <th class="border px-6 py-4 text-right">Payment</th>
+                                    <td class="border px-6 py-4">{{ $transaction->payment }}</td>
+                                </tr>
+                                <tr>
+                                    <th class="border px-6 py-4 text-right">Payment URL</th>
+                                    <td class="border px-6 py-4">{{ $transaction->payment_url }}</td>
+                                </tr>
+                                <tr>
+                                    <th class="border px-6 py-4 text-right">Total Harga</th>
+                                    <td class="border px-6 py-4">{{ "Rp. " . number_format($transaction->total_price, 0,
+                                        ',', '.') . ",-" }}</td>
+                                </tr>
+                                <tr>
+                                    <th class="border px-6 py-4 text-right">Status</th>
+                                    <td class="border px-6 py-4">{{ $transaction->status }}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
             <h2 class="font-semibold text-lg text-gray-800 leading-tight mb-5 dark:text-gray-200">Transaction Item</h2>

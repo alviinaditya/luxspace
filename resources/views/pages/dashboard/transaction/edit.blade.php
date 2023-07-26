@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
-            Product &raquo; {{ $product->name }} &raquo; Edit
+            Transaction &raquo; {{ $transaction->name }} &raquo; Edit
         </h2>
     </x-slot>
 
@@ -24,39 +24,31 @@
                     </div>
                 </div>
                 @endif
-                <form action="{{ route('dashboard.product.update', $product->id) }}" class="w-full" method="post"
-                    enctype="multipart/form-data">
+                <form action="{{ route('dashboard.transaction.update', $transaction->id) }}" class="w-full"
+                    method="post" enctype="multipart/form-data">
                     @csrf
                     @method('PUT')
                     <div class="flex flex-wrap mx-3 mb-6 space-y-4 sm:-mx-3">
                         <div class="w-full px-3">
-                            <label for="name"
-                                class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2 dark:text-gray-300">Name</label>
-                            <input type="text" name="name" value="{{ old('name') ?? $product->name }}" id="name"
+                            <label for="status"
+                                class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2 dark:text-gray-300">Status</label>
+                            <select name="status" id="status"
                                 class="block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500
-                                    dark:bg-gray-800 dark:border-gray-800 dark:focus:bg-gray-900 dark:focus:border-gray-700 dark:focus:text-gray-200" placeholder="Product Name">
-                        </div>
-                        <div class="w-full px-3">
-                            <label for="description"
-                                class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2 dark:text-gray-300">Description</label>
-                            <textarea name="description" id="description"
-                                class="block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500
-                                    dark:bg-gray-800 dark:border-gray-800 dark:focus:bg-gray-900 dark:focus:border-gray-700 dark:focus:text-gray-200">
-                                    {!! old('description') ?? $product->description !!}
-                            </textarea>
-                        </div>
-                        <div class="w-full px-3">
-                            <label for="price"
-                                class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2 dark:text-gray-300">Price</label>
-                            <input type="number" name="price" value="{{ old('price') ?? $product->price }}" id="price"
-                                class="block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500
-                                    dark:bg-gray-800 dark:border-gray-800 dark:focus:bg-gray-900 dark:focus:border-gray-700 dark:focus:text-gray-200"
-                                placeholder="Product Price">
+                            dark:bg-gray-800 dark:border-gray-800 dark:focus:bg-gray-900 dark:focus:border-gray-700 dark:focus:text-gray-200">
+                                <option value="{{ $transaction->status }}">{{ $transaction->status }}</option>
+                                <option disabled>---------------</option>
+                                <option value="PENDING">PENDING</option>
+                                <option value="SUCCESS">SUCCESS</option>
+                                <option value="CHALLENGE">CHALLENGE</option>
+                                <option value="FAILED">FAILED</option>
+                                <option value="SHIPPING">SHIPPING</option>
+                                <option value="SHIPPED">SHIPPED</option>
+                            </select>
                         </div>
                         <div class="w-full px-3">
                             <button type="submit"
                                 class="inline-block bg-indigo-500 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded shadow-lg">
-                                Save Prduct
+                                Update Status Transaction
                             </button>
                         </div>
                     </div>
@@ -64,8 +56,4 @@
             </div>
         </div>
     </div>
-    <script src="https://cdn.ckeditor.com/4.22.1/standard/ckeditor.js"></script>
-    <script>
-        CKEDITOR.replace( 'description' );
-    </script>
 </x-app-layout>
