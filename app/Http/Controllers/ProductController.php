@@ -20,7 +20,7 @@ class ProductController extends Controller
             return DataTables::of($query)
                 ->addColumn('action', function ($item) {
                     return '
-                        <a class="inline-block bg-blue-500 text-white rounded-md px-2 py-1 m-2" href="' . route('dashboard.product.gallery.index', $item->id) . '">Galley</a>
+                        <a class="inline-block bg-indigo-500 text-white rounded-md px-2 py-1 m-2" href="' . route('dashboard.product.gallery.index', $item->id) . '">Galley</a>
                         <a class="inline-block bg-gray-500 text-white rounded-md px-2 py-1 m-2" href="' . route('dashboard.product.edit', $item->id) . '">Edit</a>
                         <form class="inline-block" action="' . route('dashboard.product.destroy', $item->id) . '" method="POST">
                             ' . method_field('delete') . csrf_field() . '
