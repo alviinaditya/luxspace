@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\TransactionRequest;
+use App\Models\Product;
 use App\Models\Transaction;
 use App\Models\TransactionItem;
 use Illuminate\Http\Request;
@@ -55,7 +56,9 @@ class TransactionController extends Controller
     public function show(Transaction $transaction)
     {
         if (request()->ajax()) {
-            $query = TransactionItem::with(['product'])->where('transactions_id', $transaction->id);
+            $query = TransactionItem::with(['product' => function ($query) {
+                $query->withTrashed(); // Include soft-deleted products
+            }])->where('transactions_id', $transaction->id);
             return DataTables::of($query)
                 ->editColumn('product.price', function ($item) {
                     return "Rp. " . number_format($item->product->price, 0, ',', '.') . ",-";
